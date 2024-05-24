@@ -133,6 +133,24 @@ etc
 Strangely enough, running a Debian Jessie in a Docker with the same kernel > 4.3 works fine.  
 So till the root cause of this issue is found, please either make sure to run a kernel <= 4.3 or to run from a Docker image with Debian Jessie.
 
+Docker
+------
+
+First, the Dockerfile use pin version 3.19, 3.15 is crashing when lib is injected in the process.
+
+## Usage
+
+```
+# build image
+docker build . -t tracerpin
+
+# record an execution trace of mybinary
+docker run  -it --rm -v "${PWD}":/workdir --privileged tracerpin Tracer -t sqlite -o /workdir/ls.db -- /workdir/mybinary
+```
+
+
+
+
 Credits
 -------
 
