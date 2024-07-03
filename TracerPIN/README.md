@@ -136,15 +136,16 @@ So till the root cause of this issue is found, please either make sure to run a 
 Docker
 ------
 
-First, the Dockerfile use pin version 3.19, 3.15 is crashing when lib is injected in the process.
-
 ## Usage
 
 ```
-# build image
+# pull from github registry
+docker pull ghcr.io/llaubin/tracer/tracerpin:latest
+
+# or build image
 docker build . -t tracerpin
 
-# record an execution trace of mybinary
+# and record an execution trace of mybinary
 docker run  -it --rm -v "${PWD}":/workdir --privileged tracerpin Tracer -t sqlite -o /workdir/ls.db -- /workdir/mybinary
 ```
 
