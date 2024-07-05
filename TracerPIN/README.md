@@ -146,10 +146,18 @@ docker pull ghcr.io/llaubin/tracer/tracerpin:latest
 docker build . -t tracerpin
 
 # and record an execution trace of mybinary
-docker run  -it --rm -v "${PWD}":/workdir --privileged tracerpin Tracer -t sqlite -o /workdir/ls.db -- /workdir/mybinary
+docker run  -it --rm -v "${PWD}":/workdir --privileged tracerpin Tracer -t sqlite -o /workdir/mybinarytrace.db -- /workdir/mybinary
 ```
 
+Running the container in `privileged` mode is only required to disable ASLR. If running unprivileged, you will be warned :
 
+```
+$ docker run -it --rm -v .:/workdir tracerpin Tracer -t sqlite -o /workdir/id.db -- /bin/id 
+Fail to disable ASLR. Running in an unprivileged container ?
+[*] Trace file /workdir/id.db opened for writing...
+
+uid=0(root) gid=0(root) groups=0(root)
+```
 
 
 Credits
