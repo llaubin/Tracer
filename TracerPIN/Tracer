@@ -8,7 +8,7 @@
 options="--"
 path=$(dirname $0)
 # Disabling ASLR with setarch
-if setarch -R id > /dev/null 2&>1 ; then
+if setarch -R id > /dev/null 2>&1 ; then
     pin="setarch x86_64 -R $PIN_ROOT/pin"
 else
     echo "Fail to disable ASLR. Running in an unprivileged container ?"
