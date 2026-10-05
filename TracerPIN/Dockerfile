@@ -1,4 +1,4 @@
-FROM debian:12.5
+FROM debian:13
 
 ENV PIN_ROOT /opt/pin-3.30-98830-g1d7b601b3-gcc-linux
 
